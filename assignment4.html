@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>Assignment 4</title>
+</head>
+
+<body style="background-color: black">
+    <div class="container" style="margin-top: 20pt; background-color: white;">
+        <div class="row" style="padding: 20px">
+            <div class="col-md-3" style="float: left">
+                <form id="form">
+                    <div class="form-group">
+                        <label class="col-form-label">ID</label>
+                        <input type="text" class="form-control" id="id" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Code</label>
+                        <input type="text" class="form-control" id="code" placeholder="Code" required>
+                        <p class="small text-danger" id="cd" style="font-weight: bolder"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Item Name</label>
+                        <input type="text" class="form-control" id="itna" placeholder="Item Name" required>
+                        <p class="small text-danger" id="inn" style="font-weight: bolder"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Units</label>
+                        <input type="text" class="form-control" id="unit" placeholder="Units" required>
+                        <p class="small text-danger" id="un" style="font-weight: bolder"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Cost of Item</label>
+                        <input type="text" class="form-control" id="cost" placeholder="Cost of Item" required>
+                        <p class="small text-danger" id="ci" style="font-weight: bolder"></p>
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="pro()">Add Item</button>
+                </form>
+                <div class="row" style=" margin-top: 10px; margin-left: 2px">
+                    <p style="font-weight: bold">Total Cost: &nbsp <p id="par" style="font-weight: bold"></p>
+                    </p>
+                </div>
+                <div class="row" style="margin: 1px">
+                    <div>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#invm">View
+                            Invoice</button>
+
+
+
+
+                        <button type="button" class="btn btn-success" data-toggle="modal"
+                            data-target="#chkm">Checkout</button>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9" id="tabdiv">
+                <table class="table table-bordered" id="table1">
+                    <thead class="thead-dark">
+                        
+                            <th>ID</th>
+                            <th>Code</th>
+                            <th>Item Name</th>
+                            <th>Units</th>
+                            <th>Cost of Item</th>
+                            <th>Final Cost</th>
+                        
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <!-- Modal -->
+    <!-- I have moved the modal div over here, as it's a good practice to have 
+        modals below your main html. -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="invm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Invoice</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered" id="table2">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Code</th>
+                                <th>Item Name</th>
+                                <th>Units</th>
+                                <th>Cost of Item</th>
+                                <th>Final Cost</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                    <p style="font-weight: bold; float: left">Total Cost:<p id="pas" style="font-weight: bold"></p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="chkm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Shipping Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label class="col-form-label">Address</label>
+                            <textarea class="form-control" required placeholder="Address"></textarea>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-form-label">Phone Number</label>
+                                <input type="text" class="form-control" required placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                                <label class="col-form-label">Email</label>
+                                <input type="email" class="form-control" required placeholder="Email">
+                        </div>
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Proceed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- I have added these scripts which are essential for the modal and other 
+        advanced features of bootstrap. Please make sure you add these every time
+        from now on. -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!--essential scripts-->
+    <script>
+        var id = 1;
+        var tcost = 0;
+        function pro() {
+            document.getElementById("cd").innerHTML = "";
+            document.getElementById("inn").innerHTML = "";
+            document.getElementById("un").innerHTML = "";
+            document.getElementById("ci").innerHTML = "";
+            var code1 = document.getElementById("code").value;
+            var stat1 = validate("cd", code1);
+            console.log(stat1);
+            var itna1 = document.getElementById("itna").value;
+            var stat2 = validate("inn", itna1);
+            console.log(stat2);
+            var unit1 = document.getElementById("unit").value;
+            var stat3 = validate("un", unit1);
+            console.log(stat3);
+            var cost1 = document.getElementById("cost").value;
+            var stat4 = validate("ci", cost1);
+            console.log(stat4);
+            if (stat1 && stat2 && stat3 && stat4) {
+                var fcost = unit1 * cost1;
+                tcost = tcost + fcost;
+                addRow(id, code1, itna1, unit1, cost1, fcost);
+                id++;
+                document.getElementById("id").value = id;
+                document.getElementById("code").value = "";
+                document.getElementById("itna").value = "";
+                document.getElementById("unit").value = "";
+                document.getElementById("cost").value = "";
+                document.getElementById("par").innerHTML = tcost;
+                document.getElementById("pas").innerHTML = tcost;
+            }
+        }
+        function addRow(id, code, itna, unit, cost, fcost) {
+            var table1 = document.getElementById("table1");
+            var table2 = document.getElementById("table2");
+            var row1 = table1.insertRow();
+            var row2 = table2.insertRow();
+            row1.insertCell(0).innerHTML = id;
+            row1.insertCell(1).innerHTML = code;
+            row1.insertCell(2).innerHTML = itna;
+            row1.insertCell(3).innerHTML = unit;
+            row1.insertCell(4).innerHTML = cost;
+            row1.insertCell(5).innerHTML = fcost;
+            row2.insertCell(0).innerHTML = id;
+            row2.insertCell(1).innerHTML = code;
+            row2.insertCell(2).innerHTML = itna;
+            row2.insertCell(3).innerHTML = unit;
+            row2.insertCell(4).innerHTML = cost;
+            row2.insertCell(5).innerHTML = fcost;
+
+        }
+        function validate(x, y){
+            if (y==""){
+                document.getElementById(x).innerHTML = "This field is required";
+                return false;
+            }
+            else if(x=="un" || x=="ci") {
+                if (isNaN(y)) {
+                    document.getElementById(x).innerHTML = "Please enter a valid number";
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+            else{
+                return true;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
