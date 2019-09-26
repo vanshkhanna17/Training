@@ -1,0 +1,14 @@
+.jumbotron{
+    background-color: orange;
+}
+#card{
+    margin-top: 10pt;
+}
+.crow{
+  
+    margin-top: 10px;
+}
+.col-md-4{
+    width: 100%;
+    height: 100%;
+}
